@@ -5,7 +5,7 @@
 namespace Homework2;
 
 /// <summary>
-/// vdgebbr.
+/// Prefix tree data structure.
 /// </summary>
 public class Trie
 {
@@ -38,32 +38,55 @@ public class Trie
             throw new AggregateException("String is empty");
         }
 
-        var current = this.root;
+        var current = this.root ?? throw new ArgumentNullException(nameof(element));
         bool isNewWord = false;
-        if (current is not null)
+        foreach (char item in element)
         {
-            foreach (char item in element)
+            if (!current.Children.TryGetValue(item, out var value))
             {
-                if (!current.Children.TryGetValue(item, out var value))
-                {
-                    value = new Node();
-                    current.Children[item] = value;
-                    isNewWord = true;
-                }
-
-                current = value;
-                current.Counter++;
+                value = new Node();
+                current.Children[item] = value;
+                isNewWord = true;
             }
 
-            if (!current.IsEndOfTheWord)
-            {
-                current.IsEndOfTheWord = true;
-                this.size++;
-                return true;
-            }
+            current = value;
+            current.Counter++;
+        }
+
+        if (!current.IsEndOfTheWord)
+        {
+            current.IsEndOfTheWord = true;
+            this.size++;
+            return true;
         }
 
         return isNewWord;
+    }
+
+    /// <summary>
+    /// Checks whether the string is contained in the trie.
+    /// </summary>
+    /// <param name="element">The string to be found.</param>
+    /// <returns>True if the string is contained in the trie, otherwise false.</returns>
+    public bool Contains(string element)
+    {
+        if (string.IsNullOrEmpty(element))
+        {
+            throw new AggregateException("String is empty");
+        }
+
+        var currentNode = this.root ?? throw new ArgumentNullException(nameof(element));
+        foreach (char item in element)
+        {
+            if (!currentNode.Children.TryGetValue(item, out var value))
+            {
+                return false;
+            }
+
+            currentNode = value;
+        }
+
+        return currentNode.IsEndOfTheWord;
     }
 
     private class Node
