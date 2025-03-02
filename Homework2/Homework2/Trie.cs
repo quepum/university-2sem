@@ -22,7 +22,7 @@ public class Trie
     }
 
     /// <summary>
-    /// Gets the number of words in the trie.
+    /// Gets the number of strings in the trie.
     /// </summary>
     public int Size => this.size;
 
@@ -90,10 +90,10 @@ public class Trie
     }
 
     /// <summary>
-    /// tebvev.
+    /// Removes string from the trie.
     /// </summary>
-    /// <param name="element">vrwvrw.</param>
-    /// <returns>vwrvw.</returns>
+    /// <param name="element">The string to remove.</param>
+    /// <returns>True if the string was in the trie before removing, otherwise false.</returns>
     public bool Remove(string element)
     {
         if (string.IsNullOrEmpty(element))
@@ -111,13 +111,6 @@ public class Trie
         return true;
     }
 
-    /// <summary>
-    /// wvvwvrw.
-    /// </summary>
-    /// <param name="currentNode">wvrvwvww.</param>
-    /// <param name="element">wvrvwvrw.</param>
-    /// <param name="index">wvrvwvr.</param>
-    /// <returns>vwvrwvwv.</returns>
     private bool Remover(Node currentNode, string element, int index)
     {
         if (index == element.Length)
@@ -144,6 +137,32 @@ public class Trie
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Counts how many strings start with a given prefix.
+    /// </summary>
+    /// <param name="prefix">Given prefix.</param>
+    /// <returns>The number of strings that start with a given prefix.</returns>
+    public int HowManyStartsWithPrefix(string prefix)
+    {
+        if (string.IsNullOrEmpty(prefix))
+        {
+            throw new AggregateException("String is empty");
+        }
+
+        var currentNode = this.root;
+        foreach (char item in prefix)
+        {
+            if (!currentNode.Children.TryGetValue(item, out var child))
+            {
+                return 0;
+            }
+
+            currentNode = child;
+        }
+
+        return currentNode.Counter;
     }
 
     private class Node
