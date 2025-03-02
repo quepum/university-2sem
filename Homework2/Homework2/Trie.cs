@@ -89,12 +89,69 @@ public class Trie
         return currentNode.IsEndOfTheWord;
     }
 
+    /// <summary>
+    /// tebvev.
+    /// </summary>
+    /// <param name="element">vrwvrw.</param>
+    /// <returns>vwrvw.</returns>
+    public bool Remove(string element)
+    {
+        if (string.IsNullOrEmpty(element))
+        {
+            throw new AggregateException("String is empty");
+        }
+
+        if (!this.Contains(element))
+        {
+            return false;
+        }
+
+        this.Remover(this.root, element, 0);
+        this.size--;
+        return true;
+    }
+
+    /// <summary>
+    /// wvvwvrw.
+    /// </summary>
+    /// <param name="currentNode">wvrvwvww.</param>
+    /// <param name="element">wvrvwvrw.</param>
+    /// <param name="index">wvrvwvr.</param>
+    /// <returns>vwvrwvwv.</returns>
+    private bool Remover(Node currentNode, string element, int index)
+    {
+        if (index == element.Length)
+        {
+            if (!currentNode.IsEndOfTheWord)
+            {
+                return false;
+            }
+
+            currentNode.IsEndOfTheWord = false;
+            return currentNode.Children.Count == 0;
+        }
+
+        char item = element[index];
+        if (!currentNode.Children.TryGetValue(item, out var childNode))
+        {
+            return false;
+        }
+
+        if (this.Remover(childNode, element, index + 1))
+        {
+            currentNode.Children.Remove(item);
+            return !currentNode.IsEndOfTheWord && currentNode.Children.Count == 0;
+        }
+
+        return false;
+    }
+
     private class Node
     {
         public int Counter { get; set; }
 
         public bool IsEndOfTheWord { get; set; }
 
-        public Dictionary<char, Node> Children { get; } = new();
+        public Dictionary<char, Node> Children { get; } = new Dictionary<char, Node>();
     }
 }
