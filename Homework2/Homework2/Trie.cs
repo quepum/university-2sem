@@ -79,12 +79,12 @@ public class Trie
         var currentNode = this.root ?? throw new ArgumentNullException(nameof(element));
         foreach (char item in element)
         {
-            if (!currentNode.Children.TryGetValue(item, out var value))
+            if (!currentNode.Children.TryGetValue(item, out var child))
             {
                 return false;
             }
 
-            currentNode = value;
+            currentNode = child;
         }
 
         return currentNode.IsEndOfTheWord;
@@ -152,19 +152,22 @@ public class Trie
             throw new AggregateException("String is empty");
         }
 
-        var currentNode = this.root;
-        foreach (char item in prefix)
-        {
-            if (!currentNode.Children.TryGetValue(item, out var child))
-            {
-                return 0;
-            }
+        return this.GetPrefixCount(this.root, prefix, 0);
+    }
 
-            currentNode = child;
+    private int GetPrefixCount(Node currentNode, string prefix, int index)
+    {
+        if (currentNode is null || index == prefix.Length)
+        {
+            return currentNode?.Counter ?? 0;
         }
 
-        return currentNode.Counter;
+        char item = prefix[index];
+        return !currentNode.Children.TryGetValue(item, out var child)
+            ? 0
+            : this.GetPrefixCount(child, prefix, index + 1);
     }
+
 
     private class Node
     {
