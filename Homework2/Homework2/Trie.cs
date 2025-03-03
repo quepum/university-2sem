@@ -2,8 +2,6 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using System.Diagnostics.Contracts;
-
 namespace Homework2;
 
 /// <summary>
@@ -167,7 +165,6 @@ public class Trie
             ? 0
             : this.GetPrefixCount(child, prefix, index + 1);
     }
-
 
     private class Node
     {
