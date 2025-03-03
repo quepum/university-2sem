@@ -110,34 +110,6 @@ public class Trie
         return true;
     }
 
-    private bool Remover(Node currentNode, string element, int index)
-    {
-        if (index == element.Length)
-        {
-            if (!currentNode.IsEndOfTheWord)
-            {
-                return false;
-            }
-
-            currentNode.IsEndOfTheWord = false;
-            return currentNode.Children.Count == 0;
-        }
-
-        char item = element[index];
-        if (!currentNode.Children.TryGetValue(item, out var childNode))
-        {
-            return false;
-        }
-
-        if (this.Remover(childNode, element, index + 1))
-        {
-            currentNode.Children.Remove(item);
-            return !currentNode.IsEndOfTheWord && currentNode.Children.Count == 0;
-        }
-
-        return false;
-    }
-
     /// <summary>
     /// Counts how many strings start with a given prefix.
     /// </summary>
@@ -164,6 +136,34 @@ public class Trie
         return !currentNode.Children.TryGetValue(item, out var child)
             ? 0
             : this.GetPrefixCount(child, prefix, index + 1);
+    }
+
+    private bool Remover(Node currentNode, string element, int index)
+    {
+        if (index == element.Length)
+        {
+            if (!currentNode.IsEndOfTheWord)
+            {
+                return false;
+            }
+
+            currentNode.IsEndOfTheWord = false;
+            return currentNode.Children.Count == 0;
+        }
+
+        char item = element[index];
+        if (!currentNode.Children.TryGetValue(item, out var childNode))
+        {
+            return false;
+        }
+
+        if (this.Remover(childNode, element, index + 1))
+        {
+            currentNode.Children.Remove(item);
+            return !currentNode.IsEndOfTheWord && currentNode.Children.Count == 0;
+        }
+
+        return false;
     }
 
     private class Node
