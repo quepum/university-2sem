@@ -1,5 +1,12 @@
-﻿namespace Homework2.Tests;
+﻿// <copyright file="TrieTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
+namespace Homework2.Tests;
+
+/// <summary>
+/// tests for methods of the Trie class.
+/// </summary>
 public class TrieTests
 {
     private static readonly string[] TestData = [string.Empty, "a", "ab", "abc", "abcd", "abcde"];
@@ -49,7 +56,8 @@ public class TrieTests
             Assert.Multiple(() =>
             {
                 Assert.That(trie.Add(element), Is.EqualTo(true));
-                Assert.That(trie.HowManyStartsWithPrefix(element),
+                Assert.That(
+                    trie.HowManyStartsWithPrefix(element),
                     element == string.Empty ? Is.EqualTo(0) : Is.EqualTo(1));
             });
         }
@@ -58,7 +66,8 @@ public class TrieTests
         for (int i = 0; i < length; i++)
         {
             string element = TestData[i];
-            Assert.That(trie.HowManyStartsWithPrefix(element),
+            Assert.That(
+                trie.HowManyStartsWithPrefix(element),
                 i == 0 ? Is.EqualTo(0) : Is.EqualTo(length - i));
         }
     }
