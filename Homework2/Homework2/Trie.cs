@@ -2,6 +2,8 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System.Diagnostics.Contracts;
+
 namespace Homework2;
 
 /// <summary>
@@ -9,7 +11,7 @@ namespace Homework2;
 /// </summary>
 public class Trie
 {
-    private readonly Node? root;
+    private readonly Node root;
     private int size;
 
     /// <summary>
@@ -38,29 +40,28 @@ public class Trie
             throw new AggregateException("String is empty");
         }
 
-        var current = this.root ?? throw new ArgumentNullException(nameof(element));
-        bool isNewWord = false;
+        var currentNode = this.root ?? throw new ArgumentNullException(nameof(element));
         foreach (char item in element)
         {
-            if (!current.Children.TryGetValue(item, out var value))
+            if (!currentNode.Children.TryGetValue(item, out var child))
             {
-                value = new Node();
-                current.Children[item] = value;
-                isNewWord = true;
+                child = new Node();
+                currentNode.Children[item] = child;
             }
 
-            current = value;
-            current.Counter++;
+            currentNode = child;
+            currentNode.Counter++;
         }
 
-        if (!current.IsEndOfTheWord)
+        if (currentNode.IsEndOfTheWord)
         {
-            current.IsEndOfTheWord = true;
-            this.size++;
-            return true;
+            return false;
         }
 
-        return isNewWord;
+        currentNode.IsEndOfTheWord = true;
+        this.size++;
+
+        return true;
     }
 
     /// <summary>
@@ -171,6 +172,6 @@ public class Trie
 
         public bool IsEndOfTheWord { get; set; }
 
-        public Dictionary<char, Node> Children { get; } = new Dictionary<char, Node>();
+        public Dictionary<char, Node> Children { get; } = new();
     }
 }
