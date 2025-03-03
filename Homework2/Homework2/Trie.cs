@@ -33,11 +33,6 @@ public class Trie
     /// <returns>True if no such string has been added yet, otherwise false.</returns>
     public bool Add(string element)
     {
-        if (string.IsNullOrEmpty(element))
-        {
-            throw new AggregateException("String is empty");
-        }
-
         var currentNode = this.root ?? throw new ArgumentNullException(nameof(element));
         foreach (char item in element)
         {
@@ -69,11 +64,6 @@ public class Trie
     /// <returns>True if the string is contained in the trie, otherwise false.</returns>
     public bool Contains(string element)
     {
-        if (string.IsNullOrEmpty(element))
-        {
-            throw new AggregateException("String is empty");
-        }
-
         var currentNode = this.root ?? throw new ArgumentNullException(nameof(element));
         foreach (char item in element)
         {
@@ -95,11 +85,6 @@ public class Trie
     /// <returns>True if the string was in the trie before removing, otherwise false.</returns>
     public bool Remove(string element)
     {
-        if (string.IsNullOrEmpty(element))
-        {
-            throw new AggregateException("String is empty");
-        }
-
         if (!this.Contains(element))
         {
             return false;
@@ -117,11 +102,6 @@ public class Trie
     /// <returns>The number of strings that start with a given prefix.</returns>
     public int HowManyStartsWithPrefix(string prefix)
     {
-        if (string.IsNullOrEmpty(prefix))
-        {
-            throw new AggregateException("String is empty");
-        }
-
         return this.GetPrefixCount(this.root, prefix, 0);
     }
 
