@@ -6,7 +6,7 @@ using Homework2;
 
 var trie = new Trie();
 Console.Write($"Available Commands:\n" +
-              $"1. Add new string to tje trie.\n" +
+              $"1. Add new string to the trie.\n" +
               $"2. Check if the string is contained in the trie.\n" +
               $"3. Remove string from the trie.\n" +
               $"4. Count the number of strings with a given prefix in the trie.\n" +
