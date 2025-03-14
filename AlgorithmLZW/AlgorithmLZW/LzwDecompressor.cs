@@ -1,7 +1,15 @@
 ﻿namespace AlgorithmLZW;
 
+/// <summary>
+/// LZW decompressor.
+/// </summary>
 public static class LzwDecompression
 {
+    /// <summary>
+    /// Decompress method.
+    /// </summary>
+    /// <param name="compressedFilePath">The path for the file with compressed data.</param>
+    /// <exception cref="Exception"></exception>
     public static void Decompress(string compressedFilePath)
     {
         List<int> compressed = [];
@@ -42,7 +50,7 @@ public static class LzwDecompression
             }
             else
             {
-                throw new Exception("Ошибка декомпрессии");
+                throw new Exception("Decompression error");
             }
 
             result.AddRange(entry);
@@ -53,6 +61,6 @@ public static class LzwDecompression
         string outputFilePath = Path.ChangeExtension(compressedFilePath, string.Empty);
         File.WriteAllBytes(outputFilePath, result.ToArray());
 
-        Console.WriteLine($"Decompressed file saved as: {outputFilePath}");
-    }
+    Console.WriteLine($"Decompressed file saved as: {outputFilePath}");
+}
 }
