@@ -1,10 +1,18 @@
 ﻿namespace AlgorithmLZW;
 
+/// <summary>
+/// LZW compressor.
+/// </summary>
 public static class LzwCompression
 {
+    /// <summary>
+    /// Compress method.
+    /// </summary>
+    /// <param name="inputFilePath">The path for the incoming file.</param>
     public static void Compress(string inputFilePath)
     {
         byte[] inputData = File.ReadAllBytes(inputFilePath);
+        int inputDataSize = inputData.Length;
 
         var trie = new Trie().InitializeByteCodes();
         List<int> compressed = [];
@@ -37,6 +45,8 @@ public static class LzwCompression
             compressed.Add(currentCode);
         }
 
+        int compressedDataSize = compressed.Count;
+
         string outputFilePath = Path.ChangeExtension(inputFilePath, ".zipped");
         using (var writer = new BinaryWriter(File.Open(outputFilePath, FileMode.Create)))
         {
@@ -45,6 +55,10 @@ public static class LzwCompression
                 writer.Write(code);
             }
         }
+
+        Console.WriteLine($"Input data size {inputDataSize} bytes\n" +
+                          $"Compressed data size {compressedDataSize} bytes\n" +
+                          $"Compression rate {(float)inputDataSize / compressedDataSize}");
 
         Console.WriteLine($"Compressed file saved as: {outputFilePath}");
     }
