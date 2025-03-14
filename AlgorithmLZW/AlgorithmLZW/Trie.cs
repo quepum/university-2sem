@@ -1,9 +1,16 @@
 ﻿namespace AlgorithmLZW;
 
+/// <summary>
+/// Trie adapted for LZW algorithm.
+/// </summary>
 public class Trie
 {
     private readonly TrieNode root = new();
 
+    /// <summary>
+    /// Initializing the Trie with byte codes.
+    /// </summary>
+    /// <returns>Initialized Trie.</returns>
     public Trie InitializeByteCodes()
     {
         Trie trie = new();
@@ -15,7 +22,11 @@ public class Trie
         return trie;
     }
 
-    // Добавление последовательности в дерево
+    /// <summary>
+    /// Add sequence of bytes to the Trie.
+    /// </summary>
+    /// <param name="sequence">Sequence of bytes.</param>
+    /// <param name="code">Code.</param>
     public void Add(IEnumerable<byte> sequence, int code)
     {
         var node = this.root;
@@ -33,7 +44,11 @@ public class Trie
         node.Code = code;
     }
 
-    // Проверка наличия последовательности в дереве
+    /// <summary>
+    /// Checking for a sequence in the Trie.
+    /// </summary>
+    /// <param name="sequence">Sequence of bytes.</param>
+    /// <returns>True if the sequence is in the Trie, otherwise false. </returns>
     public bool Contains(IEnumerable<byte> sequence)
     {
         var node = this.root;
@@ -50,7 +65,11 @@ public class Trie
         return node.Code.HasValue;
     }
 
-    // Получение кода для последовательности
+    /// <summary>
+    /// Get code of byte sequence.
+    /// </summary>
+    /// <param name="sequence">Sequence of bytes.</param>
+    /// <returns>Code for sequence.</returns>
     public int? GetCode(IEnumerable<byte> sequence)
     {
         var node = this.root;
