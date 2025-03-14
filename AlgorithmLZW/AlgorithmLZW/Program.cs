@@ -6,7 +6,7 @@ using AlgorithmLZW;
 
 if (args.Length == 0)
 {
-    Console.WriteLine("Ошибка: не указан путь к файлу");
+    Console.WriteLine("Error: input without filepath");
     return;
 }
 
@@ -16,7 +16,7 @@ try
 {
     if (!File.Exists(filePath))
     {
-        Console.WriteLine("Файл не найден");
+        Console.WriteLine("No such file");
         return;
     }
 
@@ -36,5 +36,5 @@ try
 }
 catch (Exception ex)
 {
-    Console.WriteLine($"Ошибка: {ex.Message}");
+    Console.WriteLine($"Error: {ex.Message}");
 }
