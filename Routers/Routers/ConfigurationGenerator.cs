@@ -44,7 +44,13 @@ public class ConfigurationGenerator
 
     private void ParseTopology(string inputPath)
     {
-        foreach (string line in File.ReadAllLines(inputPath))
+        string[] data = File.ReadAllLines(inputPath);
+        if (data.Length == 0)
+        {
+            throw new NullGraphException();
+        }
+
+        foreach (string line in data)
         {
             string trimmedString = line.Trim();
             if (string.IsNullOrEmpty(trimmedString))
@@ -53,12 +59,21 @@ public class ConfigurationGenerator
             }
 
             string[] parts = trimmedString.Split(':');
+            if (parts.Length != 2)
+            {
+                throw new FormatException();
+            }
 
             int router = int.Parse(parts[0]);
             var connections = parts[1].Trim().Split(",", StringSplitOptions.RemoveEmptyEntries)
                 .Select(item =>
                 {
                     string[] neighbourPart = item.Trim().Split('(', 2);
+                    if (neighbourPart.Length != 2)
+                    {
+                        throw new FormatException();
+                    }
+
                     int neighbour = int.Parse(neighbourPart[0]);
                     int capacity = int.Parse(neighbourPart[1].TrimEnd(')'));
                     return (neighbour, capacity);

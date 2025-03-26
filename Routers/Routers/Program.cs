@@ -4,11 +4,23 @@
 
 using Routers;
 
+string inputFilePath = args[0];
+string outputFilePath = args[1];
+
 try
 {
-    const string inputFilePath = @"C:\Users\Алина\RiderProjects\university-2sem\Routers\Routers\inputData.txt";
-    string outputFilePath = @"C:\Users\Алина\RiderProjects\university-2sem\Routers\Routers\outputData.txt";
     var generator = new ConfigurationGenerator(inputFilePath);
+    generator.WriteOutput(outputFilePath);
+}
+catch (FileNotFoundException exception)
+{
+    Console.WriteLine($"File not found: {exception.FileName}");
+    return 1;
+}
+catch (NullGraphException exception)
+{
+    Console.WriteLine(exception.Message);
+    return 1;
 }
 catch (NetworkNotConnectedException ex)
 {
@@ -17,8 +29,8 @@ catch (NetworkNotConnectedException ex)
 }
 catch (FormatException ex)
 {
-    Console.Error.WriteLine($"Data format error: {ex.Message}");
-    return 2;
+    Console.Error.WriteLine(ex.Message);
+    return 1;
 }
 catch (Exception ex)
 {
