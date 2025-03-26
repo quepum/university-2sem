@@ -9,8 +9,9 @@ namespace Routers;
 /// </summary>
 public class ConfigurationGenerator
 {
-    private List<(int, int, int)> topology;
-    private SortedList<int, List<(int, int)>> resultTopology;
+    private readonly Dictionary<int, List<(int, int)>> topology;
+    private readonly Dictionary<int, List<(int, int)>> resultTopology;
+    private int totalCapacity;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ConfigurationGenerator"/> class.
@@ -18,10 +19,8 @@ public class ConfigurationGenerator
     /// <param name="path">geg.</param>
     public ConfigurationGenerator(string path)
     {
-        this.topology = [];
-        this.resultTopology = new SortedList<int, List<(int, int)>>();
-
-        // Парсим входные данные
+        this.topology = new Dictionary<int, List<(int, int)>>();
+        this.resultTopology = new Dictionary<int, List<(int, int)>>();
         this.ParseTopology(path);
 
         // Генерируем конфигурацию
@@ -34,34 +33,41 @@ public class ConfigurationGenerator
     /// <param name="inputPath">The path to the input file.</param>
     private void ParseTopology(string inputPath)
     {
-        var vertices = new HashSet<int>();
-        var edges = new HashSet<(int, int, int)>();
-
         foreach (string line in File.ReadAllLines(inputPath))
         {
-            string trimmed = line.Trim();
-            if (string.IsNullOrEmpty(trimmed))
+            string trimmedString = line.Trim();
+            if (string.IsNullOrEmpty(trimmedString))
             {
                 continue;
             }
 
-            string[] parts = trimmed.Split(':', 2);
-            int router = int.Parse(parts[0].Trim());
-            vertices.Add(router);
+            string[] parts = trimmedString.Split(':');
 
-            string[] connections = parts[1].Trim().Split(',', StringSplitOptions.RemoveEmptyEntries);
-            foreach (string conn in connections)
-            {
-                string[] neighborPart = conn.Trim().Split(['(', ')'], StringSplitOptions.RemoveEmptyEntries);
-                int neighbor = int.Parse(neighborPart[0]);
-                int capacity = int.Parse(neighborPart[1]);
-
-                // Добавляем ребра в отсортированном виде (u < v)
-                var sorted = (Math.Min(router, neighbor), Math.Max(router, neighbor), capacity);
-                edges.Add(sorted);
-            }
+            int router = int.Parse(parts[0]);
+            var connections = parts[1].Trim().Split(",", StringSplitOptions.RemoveEmptyEntries)
+                .Select(item =>
+                {
+                    string[] neighbourPart = item.Trim().Split('(', 2);
+                    int neighbour = int.Parse(neighbourPart[0]);
+                    int capacity = int.Parse(neighbourPart[1].TrimEnd(')'));
+                    return (neighbour, capacity);
+                })
+                .Where(c => c.neighbour > router)
+                .ToList();
+            this.topology[router] = connections;
         }
 
-        this.topology = edges.ToList();
+        ShowGraphContent(this.topology);
+    }
+
+    private static void ShowGraphContent(Dictionary<int, List<(int, int)>> graph)
+    {
+        foreach (var node in graph)
+        {
+            Console.WriteLine($"{node.Key}:");
+            string edgesString = string.Join(", ", node.Value.Select(edge => $"{edge.Item1} ({edge.Item2})"));
+
+            Console.WriteLine(edgesString);
+        }
     }
 }

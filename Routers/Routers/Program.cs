@@ -8,6 +8,7 @@ try
 {
     const string inputFilePath = @"C:\Users\Алина\RiderProjects\university-2sem\Routers\Routers\inputData.txt";
     string outputFilePath = @"C:\Users\Алина\RiderProjects\university-2sem\Routers\Routers\outputData.txt";
+    var generator = new ConfigurationGenerator(inputFilePath);
 }
 catch (NetworkNotConnectedException ex)
 {
@@ -25,4 +26,3 @@ catch (Exception ex)
 }
 
 return 0;
-
