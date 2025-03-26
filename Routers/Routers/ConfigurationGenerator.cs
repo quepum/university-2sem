@@ -11,7 +11,6 @@ public class ConfigurationGenerator
 {
     private readonly Dictionary<int, List<(int, int)>> topology;
     private readonly Dictionary<int, List<(int, int)>> resultTopology;
-    private int totalCapacity;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ConfigurationGenerator"/> class.
@@ -26,9 +25,23 @@ public class ConfigurationGenerator
     }
 
     /// <summary>
-    /// Parses the input file with the network topology.
+    /// Writes the built configuration to the output file.
     /// </summary>
-    /// <param name="inputPath">The path to the input file.</param>
+    /// <param name="outputPath">The output file path.</param>
+    public void WriteOutput(string outputPath)
+    {
+        using var writer = new StreamWriter(outputPath);
+        foreach (int router in this.resultTopology.Keys.Where(r => this.resultTopology[r].Any()).OrderBy(r => r))
+        {
+            var connections = this.resultTopology[router]
+                .OrderBy(c => c.Item1)
+                .Select(c => $"{c.Item1} ({c.Item2})");
+            var enumerable = connections.ToList();
+
+            writer.WriteLine($"{router}: {string.Join(", ", enumerable)}");
+        }
+    }
+
     private void ParseTopology(string inputPath)
     {
         foreach (string line in File.ReadAllLines(inputPath))
@@ -108,7 +121,5 @@ public class ConfigurationGenerator
                 this.resultTopology[v].Add((u, w));
             }
         }
-
-        this.totalCapacity = mst.Sum(e => e.Item3);
     }
 }
