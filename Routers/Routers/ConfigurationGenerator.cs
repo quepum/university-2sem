@@ -16,15 +16,13 @@ public class ConfigurationGenerator
     /// <summary>
     /// Initializes a new instance of the <see cref="ConfigurationGenerator"/> class.
     /// </summary>
-    /// <param name="path">geg.</param>
+    /// <param name="path">A path to the input data file.</param>
     public ConfigurationGenerator(string path)
     {
         this.topology = new Dictionary<int, List<(int, int)>>();
         this.resultTopology = new Dictionary<int, List<(int, int)>>();
         this.ParseTopology(path);
-
-        // Генерируем конфигурацию
-        // GenerateMaxSpanningTree();
+        this.GenerateMaxSpanningTree();
     }
 
     /// <summary>
@@ -56,18 +54,61 @@ public class ConfigurationGenerator
                 .ToList();
             this.topology[router] = connections;
         }
-
-        ShowGraphContent(this.topology);
     }
 
-    private static void ShowGraphContent(Dictionary<int, List<(int, int)>> graph)
+    private void GenerateMaxSpanningTree()
     {
-        foreach (var node in graph)
-        {
-            Console.WriteLine($"{node.Key}:");
-            string edgesString = string.Join(", ", node.Value.Select(edge => $"{edge.Item1} ({edge.Item2})"));
+        var edges = this.topology
+            .SelectMany(routerEntry =>
+                routerEntry.Value.Select(conn => (routerEntry.Key, conn.Item1, conn.Item2)))
+            .OrderByDescending(e => e.Item3)
+            .ToList();
 
-            Console.WriteLine(edgesString);
+        var allVertices = new HashSet<int>(this.topology.Keys);
+        foreach ((int u, int v, int _) in edges)
+        {
+            allVertices.Add(u);
+            allVertices.Add(v);
         }
+
+        var dsu = new Dsu(allVertices);
+        var mst = new List<(int, int, int)>();
+
+        foreach ((int u, int v, int w) in edges)
+        {
+            if (dsu.Find(u) != dsu.Find(v))
+            {
+                dsu.Union(u, v);
+                mst.Add((u, v, w));
+                if (mst.Count == allVertices.Count - 1)
+                {
+                    break;
+                }
+            }
+        }
+
+        if (mst.Count != allVertices.Count - 1)
+        {
+            throw new NetworkNotConnectedException();
+        }
+
+        foreach (int vertex in allVertices)
+        {
+            this.resultTopology[vertex] = [];
+        }
+
+        foreach ((int u, int v, int w) in mst)
+        {
+            if (u < v)
+            {
+                this.resultTopology[u].Add((v, w));
+            }
+            else
+            {
+                this.resultTopology[v].Add((u, w));
+            }
+        }
+
+        this.totalCapacity = mst.Sum(e => e.Item3);
     }
 }
