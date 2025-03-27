@@ -12,20 +12,24 @@ try
     var generator = new ConfigurationGenerator(inputFilePath);
     generator.WriteOutput(outputFilePath);
 }
-catch (FileNotFoundException exception)
+catch (FileNotFoundException ex)
 {
-    Console.WriteLine($"File not found: {exception.FileName}");
+    Console.Error.WriteLine($"File not found: {ex.FileName}");
     return 1;
 }
-catch (NullGraphException exception)
+catch (NullGraphException ex)
 {
-    Console.WriteLine(exception.Message);
+    Console.Error.WriteLine(ex.Message);
     return 1;
 }
 catch (NetworkDisconnectedException ex)
 {
     Console.Error.WriteLine(ex.Message);
     return 1;
+}
+catch (NegativeBandwidthException ex)
+{
+    Console.Error.WriteLine(ex.Message);
 }
 catch (FormatException ex)
 {

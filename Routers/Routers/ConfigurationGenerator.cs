@@ -76,6 +76,11 @@ public class ConfigurationGenerator
 
                     int neighbour = int.Parse(neighbourPart[0]);
                     int capacity = int.Parse(neighbourPart[1].TrimEnd(')'));
+                    if (capacity < 0)
+                    {
+                        throw new NegativeBandwidthException();
+                    }
+
                     return (neighbour, capacity);
                 })
                 .Where(c => c.neighbour > router)
