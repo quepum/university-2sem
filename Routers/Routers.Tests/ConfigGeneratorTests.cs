@@ -4,21 +4,14 @@
 
 namespace Routers.Tests;
 
-public class Tests
+public class ConfigGeneratorTests
 {
-    private string CreateTempFile(string data)
-    {
-        string tempFile = Path.GetTempFileName();
-        File.WriteAllText(tempFile, data);
-        return tempFile;
-    }
-
     [Test]
     public void SimpleConnectedNetworkTest()
     {
         const string inputData = @"1: 2(9)";
 
-        string tempInputFile = this.CreateTempFile(inputData);
+        string tempInputFile = CreateTempFile(inputData);
         string tempOutputFile = Path.GetTempFileName();
 
         var generator = new ConfigurationGenerator(tempInputFile);
@@ -104,5 +97,12 @@ public class Tests
         {
             File.Delete(tempInput);
         }
+    }
+
+    private string CreateTempFile(string data)
+    {
+        string tempFile = Path.GetTempFileName();
+        File.WriteAllText(tempFile, data);
+        return tempFile;
     }
 }
