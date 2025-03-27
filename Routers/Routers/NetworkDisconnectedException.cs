@@ -8,4 +8,4 @@ namespace Routers;
 /// This exception is used when a router network connectivity issue is detected.
 /// Indicates problems with the network topology, in which routers cannot efficiently transfer data between themselves.
 /// </summary>
-public class NetworkNotConnectedException() : Exception("The network is not connected.");
+public class NetworkDisconnectedException() : Exception("The network is not connected.");
