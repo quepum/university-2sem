@@ -99,7 +99,7 @@ public class ConfigGeneratorTests
         }
     }
 
-    private string CreateTempFile(string data)
+    private static string CreateTempFile(string data)
     {
         string tempFile = Path.GetTempFileName();
         File.WriteAllText(tempFile, data);
