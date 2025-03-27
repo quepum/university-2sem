@@ -117,7 +117,7 @@ public class ConfigurationGenerator
 
         if (mst.Count != allVertices.Count - 1)
         {
-            throw new NetworkNotConnectedException();
+            throw new NetworkDisconnectedException();
         }
 
         foreach (int vertex in allVertices)

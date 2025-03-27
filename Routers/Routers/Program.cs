@@ -22,7 +22,7 @@ catch (NullGraphException exception)
     Console.WriteLine(exception.Message);
     return 1;
 }
-catch (NetworkNotConnectedException ex)
+catch (NetworkDisconnectedException ex)
 {
     Console.Error.WriteLine(ex.Message);
     return 1;
