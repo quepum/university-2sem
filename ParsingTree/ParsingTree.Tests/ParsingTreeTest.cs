@@ -16,11 +16,12 @@ public class Tests
     [
         new TestCaseData("(* (+ 1 2) (- 3 4) (/ 8 2))"),
         new TestCaseData("(* (+ 1 2)"),
-        new TestCaseData(""),
+        new TestCaseData(string.Empty),
         new TestCaseData("(* (+ 1 2) abc)")
     ];
 
-    [Test, TestCaseSource(nameof(ValidExpressions))]
+    [Test]
+    [TestCaseSource(nameof(ValidExpressions))]
     public void ParseAndEvaluate_ValidExpression_ReturnsCorrectResult(string expression, int expectedValue)
     {
         using var tempFile = new TempFile(expression);
@@ -30,7 +31,8 @@ public class Tests
         Assert.That(expectedValue, Is.EqualTo(result));
     }
 
-    [Test, TestCaseSource(nameof(InvalidExpressions))]
+    [Test]
+    [TestCaseSource(nameof(InvalidExpressions))]
     public void ParseAndEvaluate_InvalidExpression_ThrowsFormatException(string expression)
     {
         using var tempFile = new TempFile(expression);
@@ -63,15 +65,15 @@ public class Tests
 
         public TempFile(string content)
         {
-            Path = System.IO.Path.GetTempFileName();
-            File.WriteAllText(Path, content);
+            this.Path = System.IO.Path.GetTempFileName();
+            File.WriteAllText(this.Path, content);
         }
 
         public void Dispose()
         {
-            if (File.Exists(Path))
+            if (File.Exists(this.Path))
             {
-                File.Delete(Path);
+                File.Delete(this.Path);
             }
         }
     }
