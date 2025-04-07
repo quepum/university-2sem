@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParsingTree", "ParsingTree\ParsingTree.csproj", "{304E754D-9FC4-4B3A-A055-19CC6E892DB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParsingTree.Tests", "ParsingTree.Tests\ParsingTree.Tests.csproj", "{E5144C55-3189-44A6-B5C1-CEB64899ADC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{304E754D-9FC4-4B3A-A055-19CC6E892DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{304E754D-9FC4-4B3A-A055-19CC6E892DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{304E754D-9FC4-4B3A-A055-19CC6E892DB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5144C55-3189-44A6-B5C1-CEB64899ADC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5144C55-3189-44A6-B5C1-CEB64899ADC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5144C55-3189-44A6-B5C1-CEB64899ADC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5144C55-3189-44A6-B5C1-CEB64899ADC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
