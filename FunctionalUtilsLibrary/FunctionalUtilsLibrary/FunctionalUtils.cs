@@ -1,4 +1,8 @@
-﻿namespace FunctionalUtilsLibrary;
+﻿// <copyright file="FunctionalUtils.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace FunctionalUtilsLibrary;
 
 /// <summary>
 /// Contains 3 generic functions.
@@ -24,6 +28,32 @@ public class FunctionalUtils
         foreach (var item in collection)
         {
             result.Add(transformation(item));
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Filters the elements of the collection, leaving only those that satisfy the specified condition.
+    /// </summary>
+    /// <typeparam name="T">The type of the collection items.</typeparam>
+    /// <param name="collection">The input collection of items.</param>
+    /// <param name="transformation">The filtering condition.</param>
+    /// <returns>A new collection containing filtered items.</returns>
+    public static List<T> Filter<T>(IEnumerable<T> collection, Func<T, bool> transformation)
+    {
+        if (collection == null || transformation == null)
+        {
+            throw new ArgumentNullException(nameof(collection), "Input data is null.");
+        }
+
+        var result = new List<T>();
+        foreach (var item in collection)
+        {
+            if (transformation(item))
+            {
+                result.Add(item);
+            }
         }
 
         return result;
