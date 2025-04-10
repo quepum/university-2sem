@@ -58,4 +58,29 @@ public class FunctionalUtils
 
         return result;
     }
+
+    /// <summary>
+    /// Collapses the collection into a single value using an accumulator.
+    /// </summary>
+    /// <typeparam name="T">The type of the collection items.</typeparam>
+    /// <typeparam name="TOut">The type of the initial and result values.</typeparam>
+    /// <param name="collection">The input collection of items.</param>
+    /// <param name="initialValue">The initial value of the accumulator.</param>
+    /// <param name="transformation">Battery function.</param>
+    /// <returns>The resulting value after processing the entire collection.</returns>
+    public static TOut Fold<T, TOut>(IEnumerable<T> collection, TOut initialValue, Func<TOut, T, TOut> transformation)
+    {
+        if (collection == null || transformation == null)
+        {
+            throw new ArgumentNullException(nameof(collection), "Input data is null.");
+        }
+
+        var result = initialValue;
+        foreach (var item in collection)
+        {
+            result = transformation(result, item);
+        }
+
+        return result;
+    }
 }
