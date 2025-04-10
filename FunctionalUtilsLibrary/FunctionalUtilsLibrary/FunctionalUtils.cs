@@ -1,0 +1,31 @@
+﻿namespace FunctionalUtilsLibrary;
+
+/// <summary>
+/// Contains 3 generic functions.
+/// </summary>
+public class FunctionalUtils
+{
+    /// <summary>
+    /// Transforms each element of the collection using the specified function.
+    /// </summary>
+    /// <typeparam name="T">The type of the input collection items.</typeparam>
+    /// <typeparam name="TOut">The type of the output collection items.</typeparam>
+    /// <param name="collection">The input collection of items.</param>
+    /// <param name="transformation">Element transformation function.</param>
+    /// <returns>A new collection containing converted items.</returns>
+    public static List<TOut> Map<T, TOut>(IEnumerable<T> collection, Func<T, TOut> transformation)
+    {
+        if (collection == null || transformation == null)
+        {
+            throw new ArgumentNullException(nameof(collection), "Input data is null.");
+        }
+
+        var result = new List<TOut>();
+        foreach (var item in collection)
+        {
+            result.Add(transformation(item));
+        }
+
+        return result;
+    }
+}
