@@ -54,7 +54,6 @@ partial class Form1
         buttonAllClear = new System.Windows.Forms.Button();
         buttonChangeSign = new System.Windows.Forms.Button();
         textBox1 = new System.Windows.Forms.TextBox();
-        label1 = new System.Windows.Forms.Label();
         SuspendLayout();
         // 
         // buttonZero
@@ -65,7 +64,7 @@ partial class Form1
         buttonZero.TabIndex = 0;
         buttonZero.Text = "0";
         buttonZero.UseVisualStyleBackColor = true;
-        buttonZero.Click += ButtonZero_Click;
+        buttonZero.Click += NumberButton_Click;
         // 
         // button1
         // 
@@ -75,7 +74,7 @@ partial class Form1
         button1.TabIndex = 1;
         button1.Text = "1";
         button1.UseVisualStyleBackColor = true;
-        button1.Click += Button1_Click;
+        button1.Click += NumberButton_Click;
         // 
         // button2
         // 
@@ -85,6 +84,7 @@ partial class Form1
         button2.TabIndex = 2;
         button2.Text = "2";
         button2.UseVisualStyleBackColor = true;
+        button2.Click += NumberButton_Click;
         // 
         // button3
         // 
@@ -94,6 +94,7 @@ partial class Form1
         button3.TabIndex = 3;
         button3.Text = "3";
         button3.UseVisualStyleBackColor = true;
+        button3.Click += NumberButton_Click;
         // 
         // button4
         // 
@@ -103,6 +104,7 @@ partial class Form1
         button4.TabIndex = 4;
         button4.Text = "4";
         button4.UseVisualStyleBackColor = true;
+        button4.Click += NumberButton_Click;
         // 
         // button5
         // 
@@ -112,6 +114,7 @@ partial class Form1
         button5.TabIndex = 5;
         button5.Text = "5";
         button5.UseVisualStyleBackColor = true;
+        button5.Click += NumberButton_Click;
         // 
         // button7
         // 
@@ -121,6 +124,7 @@ partial class Form1
         button7.TabIndex = 6;
         button7.Text = "7";
         button7.UseVisualStyleBackColor = true;
+        button7.Click += NumberButton_Click;
         // 
         // button6
         // 
@@ -130,6 +134,7 @@ partial class Form1
         button6.TabIndex = 7;
         button6.Text = "6";
         button6.UseVisualStyleBackColor = true;
+        button6.Click += NumberButton_Click;
         // 
         // button9
         // 
@@ -139,6 +144,7 @@ partial class Form1
         button9.TabIndex = 8;
         button9.Text = "9";
         button9.UseVisualStyleBackColor = true;
+        button9.Click += NumberButton_Click;
         // 
         // button8
         // 
@@ -148,6 +154,7 @@ partial class Form1
         button8.TabIndex = 9;
         button8.Text = "8";
         button8.UseVisualStyleBackColor = true;
+        button8.Click += NumberButton_Click;
         // 
         // buttonDecimal
         // 
@@ -280,7 +287,7 @@ partial class Form1
         // 
         // textBox1
         // 
-        textBox1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+        textBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
         textBox1.Location = new System.Drawing.Point(10, 20);
         textBox1.Multiline = true;
         textBox1.Name = "textBox1";
@@ -289,22 +296,12 @@ partial class Form1
         textBox1.Text = "0";
         textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
         // 
-        // label1
-        // 
-        label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-        label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
-        label1.Location = new System.Drawing.Point(19, 29);
-        label1.Name = "label1";
-        label1.Size = new System.Drawing.Size(58, 36);
-        label1.TabIndex = 24;
-        // 
         // Form1
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         BackColor = System.Drawing.Color.WhiteSmoke;
         ClientSize = new System.Drawing.Size(224, 281);
-        Controls.Add(label1);
         Controls.Add(textBox1);
         Controls.Add(buttonChangeSign);
         Controls.Add(buttonAllClear);
@@ -338,8 +335,6 @@ partial class Form1
     }
 
     private System.Windows.Forms.Button buttonZero;
-
-    private System.Windows.Forms.Label label1;
 
     private System.Windows.Forms.TextBox textBox1;
 
