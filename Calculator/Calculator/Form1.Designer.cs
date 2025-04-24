@@ -53,7 +53,8 @@ partial class Form1
         buttonClearEntry = new System.Windows.Forms.Button();
         buttonAllClear = new System.Windows.Forms.Button();
         buttonChangeSign = new System.Windows.Forms.Button();
-        textBox1 = new System.Windows.Forms.TextBox();
+        label1 = new System.Windows.Forms.Label();
+        label2 = new System.Windows.Forms.Label();
         SuspendLayout();
         // 
         // buttonZero
@@ -164,6 +165,7 @@ partial class Form1
         buttonDecimal.TabIndex = 10;
         buttonDecimal.Text = ",";
         buttonDecimal.UseVisualStyleBackColor = true;
+        buttonDecimal.Click += CommaButton_Click;
         // 
         // buttonDivision
         // 
@@ -174,6 +176,7 @@ partial class Form1
         buttonDivision.TabIndex = 11;
         buttonDivision.Text = "/";
         buttonDivision.UseVisualStyleBackColor = false;
+        buttonDivision.Click += OperatorButton_Click;
         // 
         // buttonMultiplication
         // 
@@ -184,6 +187,7 @@ partial class Form1
         buttonMultiplication.TabIndex = 12;
         buttonMultiplication.Text = "*";
         buttonMultiplication.UseVisualStyleBackColor = false;
+        buttonMultiplication.Click += OperatorButton_Click;
         // 
         // buttonMinus
         // 
@@ -194,6 +198,7 @@ partial class Form1
         buttonMinus.TabIndex = 13;
         buttonMinus.Text = "-";
         buttonMinus.UseVisualStyleBackColor = false;
+        buttonMinus.Click += OperatorButton_Click;
         // 
         // buttonPlus
         // 
@@ -204,6 +209,7 @@ partial class Form1
         buttonPlus.TabIndex = 14;
         buttonPlus.Text = "+";
         buttonPlus.UseVisualStyleBackColor = false;
+        buttonPlus.Click += OperatorButton_Click;
         // 
         // buttonEqual
         // 
@@ -214,6 +220,7 @@ partial class Form1
         buttonEqual.TabIndex = 15;
         buttonEqual.Text = "=";
         buttonEqual.UseVisualStyleBackColor = false;
+        buttonEqual.Click += EqualsButton_Click;
         // 
         // buttonFraction
         // 
@@ -264,6 +271,7 @@ partial class Form1
         buttonClearEntry.TabIndex = 20;
         buttonClearEntry.Text = "CE";
         buttonClearEntry.UseVisualStyleBackColor = false;
+        buttonClearEntry.Click += ClearEntryButton_Click;
         // 
         // buttonAllClear
         // 
@@ -274,6 +282,7 @@ partial class Form1
         buttonAllClear.TabIndex = 21;
         buttonAllClear.Text = "C";
         buttonAllClear.UseVisualStyleBackColor = false;
+        buttonAllClear.Click += ClearAllButton_Click;
         // 
         // buttonChangeSign
         // 
@@ -285,16 +294,26 @@ partial class Form1
         buttonChangeSign.Text = "±";
         buttonChangeSign.UseVisualStyleBackColor = false;
         // 
-        // textBox1
+        // label1
         // 
-        textBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
-        textBox1.Location = new System.Drawing.Point(10, 20);
-        textBox1.Multiline = true;
-        textBox1.Name = "textBox1";
-        textBox1.Size = new System.Drawing.Size(204, 60);
-        textBox1.TabIndex = 23;
-        textBox1.Text = "0";
-        textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        label1.BackColor = System.Drawing.Color.White;
+        label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+        label1.Location = new System.Drawing.Point(10, 9);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(204, 30);
+        label1.TabIndex = 24;
+        label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+        // 
+        // label2
+        // 
+        label2.BackColor = System.Drawing.Color.White;
+        label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+        label2.Location = new System.Drawing.Point(10, 39);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(204, 35);
+        label2.TabIndex = 25;
+        label2.Text = "0";
+        label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
         // 
         // Form1
         // 
@@ -302,7 +321,8 @@ partial class Form1
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         BackColor = System.Drawing.Color.WhiteSmoke;
         ClientSize = new System.Drawing.Size(224, 281);
-        Controls.Add(textBox1);
+        Controls.Add(label2);
+        Controls.Add(label1);
         Controls.Add(buttonChangeSign);
         Controls.Add(buttonAllClear);
         Controls.Add(buttonClearEntry);
@@ -331,12 +351,13 @@ partial class Form1
         MaximizeBox = false;
         Text = "Calculator";
         ResumeLayout(false);
-        PerformLayout();
     }
 
-    private System.Windows.Forms.Button buttonZero;
+    private System.Windows.Forms.Label label2;
 
-    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.Label label1;
+
+    private System.Windows.Forms.Button buttonZero;
 
     private System.Windows.Forms.Button buttonBackspace;
     private System.Windows.Forms.Button buttonClearEntry;
@@ -364,7 +385,6 @@ partial class Form1
     private System.Windows.Forms.Button button7;
     private System.Windows.Forms.Button button8;
     private System.Windows.Forms.Button button9;
-    private System.Windows.Forms.Button button10;
 
     private System.Windows.Forms.Button button1;
 
