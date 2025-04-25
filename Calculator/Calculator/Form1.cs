@@ -2,6 +2,13 @@ namespace Calculator;
 
 using System.Globalization;
 
+/// <summary>
+/// Represents the main form of the calculator application.
+/// This class manages the user interface and handles user interactions,
+/// delegating calculations and logic to the <see cref="CalculatorLogic"/> class.
+/// It provides methods for processing button clicks, updating the display,
+/// and maintaining the state of the calculator.
+/// </summary>
 public partial class Form1 : Form
 {
     private readonly CalculatorLogic calculator;
