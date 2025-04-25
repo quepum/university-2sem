@@ -51,13 +51,14 @@ partial class Form1
         buttonAllClear = new System.Windows.Forms.Button();
         label1 = new System.Windows.Forms.Label();
         label2 = new System.Windows.Forms.Label();
+        buttonToggleSign = new System.Windows.Forms.Button();
         SuspendLayout();
         // 
         // buttonZero
         // 
-        buttonZero.Location = new System.Drawing.Point(22, 242);
+        buttonZero.Location = new System.Drawing.Point(68, 242);
         buttonZero.Name = "buttonZero";
-        buttonZero.Size = new System.Drawing.Size(86, 32);
+        buttonZero.Size = new System.Drawing.Size(40, 32);
         buttonZero.TabIndex = 0;
         buttonZero.Text = "0";
         buttonZero.UseVisualStyleBackColor = true;
@@ -155,12 +156,13 @@ partial class Form1
         // 
         // buttonDecimal
         // 
+        buttonDecimal.BackColor = System.Drawing.Color.DarkGray;
         buttonDecimal.Location = new System.Drawing.Point(114, 242);
         buttonDecimal.Name = "buttonDecimal";
         buttonDecimal.Size = new System.Drawing.Size(40, 32);
         buttonDecimal.TabIndex = 10;
         buttonDecimal.Text = ",";
-        buttonDecimal.UseVisualStyleBackColor = true;
+        buttonDecimal.UseVisualStyleBackColor = false;
         buttonDecimal.Click += CommaButton_Click;
         // 
         // buttonDivision
@@ -273,12 +275,24 @@ partial class Form1
         label2.Text = "0";
         label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
         // 
+        // buttonToggleSign
+        // 
+        buttonToggleSign.BackColor = System.Drawing.Color.DarkGray;
+        buttonToggleSign.Location = new System.Drawing.Point(22, 242);
+        buttonToggleSign.Name = "buttonToggleSign";
+        buttonToggleSign.Size = new System.Drawing.Size(40, 32);
+        buttonToggleSign.TabIndex = 26;
+        buttonToggleSign.Text = "±";
+        buttonToggleSign.UseVisualStyleBackColor = false;
+        buttonToggleSign.Click += ToggleSignButton_Click;
+        // 
         // Form1
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         BackColor = System.Drawing.Color.LightGray;
         ClientSize = new System.Drawing.Size(224, 281);
+        Controls.Add(buttonToggleSign);
         Controls.Add(label2);
         Controls.Add(label1);
         Controls.Add(buttonAllClear);
@@ -306,6 +320,8 @@ partial class Form1
         Text = "Calculator";
         ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Button buttonToggleSign;
 
     private System.Windows.Forms.Label label2;
 
