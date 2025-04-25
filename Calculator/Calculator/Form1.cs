@@ -61,8 +61,8 @@ public partial class Form1 : Form
     private void UpdateDisplay()
     {
         this.fullExpression = this.calculator.GetExpression();
-        double result = this.calculator.GetCurrentValue();
-        this.label1.Text = this.fullExpression.Length > 40 ? this.fullExpression[^30..] : this.fullExpression;
+        double result = this.calculator.GetCurrentResult();
+        this.label1.Text = this.fullExpression.Length > 30 ? this.fullExpression[^30..] : this.fullExpression;
 
         this.label2.Text = result.ToString(CultureInfo.CurrentCulture);
     }

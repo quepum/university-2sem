@@ -6,36 +6,39 @@ public class CalculatorLogic
 {
     private readonly List<string> expression = [];
 
-    private double currentValue;
+    private long integerPart;
+    private long fractionalPart;
     private double previousResult;
     private string? currentOperator;
     private bool waitNewOperand = true;
     private bool hasDecimalPoint;
     private int decimalPlaces;
 
-    private double DisplayResult { get; set; } = 0;
+    private double DisplayResult { get; set; }
 
     public void AddDigit(int digit)
     {
         if (this.waitNewOperand)
         {
-            this.currentValue = digit;
+            this.integerPart = digit;
+            this.fractionalPart = 0;
+            this.decimalPlaces = 0;
             this.waitNewOperand = false;
         }
         else
         {
             if (this.hasDecimalPoint)
             {
+                this.fractionalPart = (this.fractionalPart * 10) + digit;
                 this.decimalPlaces++;
-                this.currentValue += digit / Math.Pow(10, this.decimalPlaces);
             }
             else
             {
-                this.currentValue = (this.currentValue * 10) + digit;
+                this.integerPart = (this.integerPart * 10) + digit;
             }
         }
 
-        this.DisplayResult = this.currentValue;
+        this.DisplayResult = this.GetCurrentDoubleValue();
     }
 
     public void SetOperator(string op)
@@ -44,23 +47,20 @@ public class CalculatorLogic
         {
             this.ApplyOperation();
 
-            this.expression.Add(this.currentValue.ToString(CultureInfo.CurrentCulture));
+            this.expression.Add(this.GetCurrentDoubleValue().ToString(CultureInfo.CurrentCulture));
             this.expression.Add(op);
 
             this.ResetState();
         }
         else
         {
-            if (this.expression.Count > 0)
+            if (this.expression.Count > 0 && IsOperator(this.expression[^1]))
             {
-                if (IsOperator(this.expression[^1]))
-                {
-                    this.expression[^1] = op;
-                }
-                else
-                {
-                    this.expression.Add(op);
-                }
+                this.expression[^1] = op;
+            }
+            else
+            {
+                this.expression.Add(op);
             }
         }
 
@@ -73,7 +73,7 @@ public class CalculatorLogic
         {
             this.ApplyOperation();
 
-            this.expression.Add(this.currentValue.ToString(CultureInfo.CurrentCulture));
+            this.expression.Add(this.GetCurrentDoubleValue().ToString(CultureInfo.CurrentCulture));
 
             this.expression.Clear();
             this.expression.Add(this.previousResult.ToString(CultureInfo.CurrentCulture));
@@ -98,10 +98,10 @@ public class CalculatorLogic
             this.ResetState();
         }
 
-        this.DisplayResult = this.currentValue;
+        this.DisplayResult = this.GetCurrentDoubleValue();
     }
 
-    public double GetCurrentValue()
+    public double GetCurrentResult()
     {
         return this.DisplayResult;
     }
@@ -116,7 +116,6 @@ public class CalculatorLogic
         if (!this.hasDecimalPoint)
         {
             this.hasDecimalPoint = true;
-            this.waitNewOperand = false;
         }
     }
 
@@ -125,21 +124,28 @@ public class CalculatorLogic
         return token is "+" or "-" or "*" or "/";
     }
 
+    private double GetCurrentDoubleValue()
+    {
+        return this.integerPart + (this.fractionalPart / Math.Pow(10, this.decimalPlaces));
+    }
+
     private void ApplyOperation()
     {
+        double currentValue = this.GetCurrentDoubleValue();
+
         if (this.currentOperator == null)
         {
-            this.previousResult = this.currentValue;
+            this.previousResult = currentValue;
         }
         else
         {
             switch (this.currentOperator)
             {
-                case "+": this.previousResult += this.currentValue; break;
-                case "-": this.previousResult -= this.currentValue; break;
-                case "*": this.previousResult *= this.currentValue; break;
+                case "+": this.previousResult += currentValue; break;
+                case "-": this.previousResult -= currentValue; break;
+                case "*": this.previousResult *= currentValue; break;
                 case "/":
-                    this.previousResult = this.currentValue != 0 ? this.previousResult / this.currentValue : 0; break;
+                    this.previousResult = currentValue != 0 ? this.previousResult / currentValue : 0; break;
             }
         }
 
@@ -148,9 +154,10 @@ public class CalculatorLogic
 
     private void ResetState()
     {
-        this.currentValue = 0;
-        this.waitNewOperand = true;
-        this.hasDecimalPoint = false;
+        this.integerPart = 0;
+        this.fractionalPart = 0;
         this.decimalPlaces = 0;
+        this.hasDecimalPoint = false;
+        this.waitNewOperand = true;
     }
 }

@@ -46,22 +46,18 @@ partial class Form1
         buttonMinus = new System.Windows.Forms.Button();
         buttonPlus = new System.Windows.Forms.Button();
         buttonEqual = new System.Windows.Forms.Button();
-        buttonFraction = new System.Windows.Forms.Button();
-        buttonSquareRoot = new System.Windows.Forms.Button();
-        buttonRemains = new System.Windows.Forms.Button();
         buttonBackspace = new System.Windows.Forms.Button();
         buttonClearEntry = new System.Windows.Forms.Button();
         buttonAllClear = new System.Windows.Forms.Button();
-        buttonChangeSign = new System.Windows.Forms.Button();
         label1 = new System.Windows.Forms.Label();
         label2 = new System.Windows.Forms.Label();
         SuspendLayout();
         // 
         // buttonZero
         // 
-        buttonZero.Location = new System.Drawing.Point(10, 231);
+        buttonZero.Location = new System.Drawing.Point(22, 242);
         buttonZero.Name = "buttonZero";
-        buttonZero.Size = new System.Drawing.Size(80, 30);
+        buttonZero.Size = new System.Drawing.Size(86, 32);
         buttonZero.TabIndex = 0;
         buttonZero.Text = "0";
         buttonZero.UseVisualStyleBackColor = true;
@@ -69,9 +65,9 @@ partial class Form1
         // 
         // button1
         // 
-        button1.Location = new System.Drawing.Point(10, 195);
+        button1.Location = new System.Drawing.Point(22, 204);
         button1.Name = "button1";
-        button1.Size = new System.Drawing.Size(35, 30);
+        button1.Size = new System.Drawing.Size(40, 32);
         button1.TabIndex = 1;
         button1.Text = "1";
         button1.UseVisualStyleBackColor = true;
@@ -79,9 +75,9 @@ partial class Form1
         // 
         // button2
         // 
-        button2.Location = new System.Drawing.Point(55, 195);
+        button2.Location = new System.Drawing.Point(68, 204);
         button2.Name = "button2";
-        button2.Size = new System.Drawing.Size(35, 30);
+        button2.Size = new System.Drawing.Size(40, 32);
         button2.TabIndex = 2;
         button2.Text = "2";
         button2.UseVisualStyleBackColor = true;
@@ -89,9 +85,9 @@ partial class Form1
         // 
         // button3
         // 
-        button3.Location = new System.Drawing.Point(97, 195);
+        button3.Location = new System.Drawing.Point(114, 204);
         button3.Name = "button3";
-        button3.Size = new System.Drawing.Size(35, 30);
+        button3.Size = new System.Drawing.Size(40, 32);
         button3.TabIndex = 3;
         button3.Text = "3";
         button3.UseVisualStyleBackColor = true;
@@ -99,9 +95,9 @@ partial class Form1
         // 
         // button4
         // 
-        button4.Location = new System.Drawing.Point(10, 159);
+        button4.Location = new System.Drawing.Point(22, 167);
         button4.Name = "button4";
-        button4.Size = new System.Drawing.Size(35, 30);
+        button4.Size = new System.Drawing.Size(40, 32);
         button4.TabIndex = 4;
         button4.Text = "4";
         button4.UseVisualStyleBackColor = true;
@@ -109,9 +105,9 @@ partial class Form1
         // 
         // button5
         // 
-        button5.Location = new System.Drawing.Point(55, 159);
+        button5.Location = new System.Drawing.Point(68, 167);
         button5.Name = "button5";
-        button5.Size = new System.Drawing.Size(35, 30);
+        button5.Size = new System.Drawing.Size(40, 32);
         button5.TabIndex = 5;
         button5.Text = "5";
         button5.UseVisualStyleBackColor = true;
@@ -119,9 +115,9 @@ partial class Form1
         // 
         // button7
         // 
-        button7.Location = new System.Drawing.Point(10, 123);
+        button7.Location = new System.Drawing.Point(22, 131);
         button7.Name = "button7";
-        button7.Size = new System.Drawing.Size(35, 30);
+        button7.Size = new System.Drawing.Size(40, 32);
         button7.TabIndex = 6;
         button7.Text = "7";
         button7.UseVisualStyleBackColor = true;
@@ -129,9 +125,9 @@ partial class Form1
         // 
         // button6
         // 
-        button6.Location = new System.Drawing.Point(97, 159);
+        button6.Location = new System.Drawing.Point(114, 167);
         button6.Name = "button6";
-        button6.Size = new System.Drawing.Size(35, 30);
+        button6.Size = new System.Drawing.Size(40, 32);
         button6.TabIndex = 7;
         button6.Text = "6";
         button6.UseVisualStyleBackColor = true;
@@ -139,9 +135,9 @@ partial class Form1
         // 
         // button9
         // 
-        button9.Location = new System.Drawing.Point(97, 123);
+        button9.Location = new System.Drawing.Point(114, 131);
         button9.Name = "button9";
-        button9.Size = new System.Drawing.Size(35, 30);
+        button9.Size = new System.Drawing.Size(40, 32);
         button9.TabIndex = 8;
         button9.Text = "9";
         button9.UseVisualStyleBackColor = true;
@@ -149,9 +145,9 @@ partial class Form1
         // 
         // button8
         // 
-        button8.Location = new System.Drawing.Point(55, 123);
+        button8.Location = new System.Drawing.Point(68, 131);
         button8.Name = "button8";
-        button8.Size = new System.Drawing.Size(35, 30);
+        button8.Size = new System.Drawing.Size(40, 32);
         button8.TabIndex = 9;
         button8.Text = "8";
         button8.UseVisualStyleBackColor = true;
@@ -159,9 +155,9 @@ partial class Form1
         // 
         // buttonDecimal
         // 
-        buttonDecimal.Location = new System.Drawing.Point(97, 231);
+        buttonDecimal.Location = new System.Drawing.Point(114, 242);
         buttonDecimal.Name = "buttonDecimal";
-        buttonDecimal.Size = new System.Drawing.Size(35, 30);
+        buttonDecimal.Size = new System.Drawing.Size(40, 32);
         buttonDecimal.TabIndex = 10;
         buttonDecimal.Text = ",";
         buttonDecimal.UseVisualStyleBackColor = true;
@@ -169,10 +165,10 @@ partial class Form1
         // 
         // buttonDivision
         // 
-        buttonDivision.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonDivision.Location = new System.Drawing.Point(138, 123);
+        buttonDivision.BackColor = System.Drawing.Color.DarkOrange;
+        buttonDivision.Location = new System.Drawing.Point(160, 131);
         buttonDivision.Name = "buttonDivision";
-        buttonDivision.Size = new System.Drawing.Size(35, 30);
+        buttonDivision.Size = new System.Drawing.Size(40, 32);
         buttonDivision.TabIndex = 11;
         buttonDivision.Text = "/";
         buttonDivision.UseVisualStyleBackColor = false;
@@ -180,10 +176,10 @@ partial class Form1
         // 
         // buttonMultiplication
         // 
-        buttonMultiplication.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonMultiplication.Location = new System.Drawing.Point(138, 159);
+        buttonMultiplication.BackColor = System.Drawing.Color.DarkOrange;
+        buttonMultiplication.Location = new System.Drawing.Point(160, 167);
         buttonMultiplication.Name = "buttonMultiplication";
-        buttonMultiplication.Size = new System.Drawing.Size(35, 30);
+        buttonMultiplication.Size = new System.Drawing.Size(40, 32);
         buttonMultiplication.TabIndex = 12;
         buttonMultiplication.Text = "*";
         buttonMultiplication.UseVisualStyleBackColor = false;
@@ -191,10 +187,10 @@ partial class Form1
         // 
         // buttonMinus
         // 
-        buttonMinus.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonMinus.Location = new System.Drawing.Point(138, 195);
+        buttonMinus.BackColor = System.Drawing.Color.DarkOrange;
+        buttonMinus.Location = new System.Drawing.Point(160, 204);
         buttonMinus.Name = "buttonMinus";
-        buttonMinus.Size = new System.Drawing.Size(35, 30);
+        buttonMinus.Size = new System.Drawing.Size(40, 32);
         buttonMinus.TabIndex = 13;
         buttonMinus.Text = "-";
         buttonMinus.UseVisualStyleBackColor = false;
@@ -202,10 +198,10 @@ partial class Form1
         // 
         // buttonPlus
         // 
-        buttonPlus.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonPlus.Location = new System.Drawing.Point(138, 231);
+        buttonPlus.BackColor = System.Drawing.Color.DarkOrange;
+        buttonPlus.Location = new System.Drawing.Point(160, 93);
         buttonPlus.Name = "buttonPlus";
-        buttonPlus.Size = new System.Drawing.Size(35, 30);
+        buttonPlus.Size = new System.Drawing.Size(40, 32);
         buttonPlus.TabIndex = 14;
         buttonPlus.Text = "+";
         buttonPlus.UseVisualStyleBackColor = false;
@@ -213,61 +209,32 @@ partial class Form1
         // 
         // buttonEqual
         // 
-        buttonEqual.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonEqual.Location = new System.Drawing.Point(179, 195);
+        buttonEqual.BackColor = System.Drawing.Color.DarkOrange;
+        buttonEqual.Location = new System.Drawing.Point(160, 242);
         buttonEqual.Name = "buttonEqual";
-        buttonEqual.Size = new System.Drawing.Size(35, 66);
+        buttonEqual.Size = new System.Drawing.Size(40, 32);
         buttonEqual.TabIndex = 15;
         buttonEqual.Text = "=";
         buttonEqual.UseVisualStyleBackColor = false;
         buttonEqual.Click += EqualsButton_Click;
         // 
-        // buttonFraction
-        // 
-        buttonFraction.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonFraction.Location = new System.Drawing.Point(179, 159);
-        buttonFraction.Name = "buttonFraction";
-        buttonFraction.Size = new System.Drawing.Size(35, 30);
-        buttonFraction.TabIndex = 16;
-        buttonFraction.Text = "1/x";
-        buttonFraction.UseVisualStyleBackColor = false;
-        // 
-        // buttonSquareRoot
-        // 
-        buttonSquareRoot.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonSquareRoot.Location = new System.Drawing.Point(179, 87);
-        buttonSquareRoot.Name = "buttonSquareRoot";
-        buttonSquareRoot.Size = new System.Drawing.Size(35, 30);
-        buttonSquareRoot.TabIndex = 17;
-        buttonSquareRoot.Text = "√";
-        buttonSquareRoot.UseVisualStyleBackColor = false;
-        // 
-        // buttonRemains
-        // 
-        buttonRemains.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonRemains.Location = new System.Drawing.Point(179, 123);
-        buttonRemains.Name = "buttonRemains";
-        buttonRemains.Size = new System.Drawing.Size(35, 30);
-        buttonRemains.TabIndex = 18;
-        buttonRemains.Text = "%";
-        buttonRemains.UseVisualStyleBackColor = false;
-        // 
         // buttonBackspace
         // 
         buttonBackspace.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonBackspace.Location = new System.Drawing.Point(97, 86);
+        buttonBackspace.ForeColor = System.Drawing.SystemColors.ControlText;
+        buttonBackspace.Location = new System.Drawing.Point(22, 93);
         buttonBackspace.Name = "buttonBackspace";
-        buttonBackspace.Size = new System.Drawing.Size(35, 30);
+        buttonBackspace.Size = new System.Drawing.Size(40, 32);
         buttonBackspace.TabIndex = 19;
         buttonBackspace.Text = "<-";
         buttonBackspace.UseVisualStyleBackColor = false;
         // 
         // buttonClearEntry
         // 
-        buttonClearEntry.BackColor = System.Drawing.Color.DarkOrange;
-        buttonClearEntry.Location = new System.Drawing.Point(10, 87);
+        buttonClearEntry.BackColor = System.Drawing.Color.DarkGray;
+        buttonClearEntry.Location = new System.Drawing.Point(68, 93);
         buttonClearEntry.Name = "buttonClearEntry";
-        buttonClearEntry.Size = new System.Drawing.Size(35, 30);
+        buttonClearEntry.Size = new System.Drawing.Size(40, 32);
         buttonClearEntry.TabIndex = 20;
         buttonClearEntry.Text = "CE";
         buttonClearEntry.UseVisualStyleBackColor = false;
@@ -275,42 +242,32 @@ partial class Form1
         // 
         // buttonAllClear
         // 
-        buttonAllClear.BackColor = System.Drawing.Color.DarkOrange;
-        buttonAllClear.Location = new System.Drawing.Point(55, 87);
+        buttonAllClear.BackColor = System.Drawing.Color.DarkGray;
+        buttonAllClear.Location = new System.Drawing.Point(114, 93);
         buttonAllClear.Name = "buttonAllClear";
-        buttonAllClear.Size = new System.Drawing.Size(35, 30);
+        buttonAllClear.Size = new System.Drawing.Size(40, 32);
         buttonAllClear.TabIndex = 21;
         buttonAllClear.Text = "C";
         buttonAllClear.UseVisualStyleBackColor = false;
         buttonAllClear.Click += ClearAllButton_Click;
         // 
-        // buttonChangeSign
-        // 
-        buttonChangeSign.BackColor = System.Drawing.SystemColors.ControlDark;
-        buttonChangeSign.Location = new System.Drawing.Point(137, 87);
-        buttonChangeSign.Name = "buttonChangeSign";
-        buttonChangeSign.Size = new System.Drawing.Size(35, 30);
-        buttonChangeSign.TabIndex = 22;
-        buttonChangeSign.Text = "±";
-        buttonChangeSign.UseVisualStyleBackColor = false;
-        // 
         // label1
         // 
-        label1.BackColor = System.Drawing.Color.White;
+        label1.BackColor = System.Drawing.Color.WhiteSmoke;
         label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
-        label1.Location = new System.Drawing.Point(10, 9);
+        label1.Location = new System.Drawing.Point(22, 9);
         label1.Name = "label1";
-        label1.Size = new System.Drawing.Size(204, 30);
+        label1.Size = new System.Drawing.Size(178, 33);
         label1.TabIndex = 24;
         label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
         // 
         // label2
         // 
-        label2.BackColor = System.Drawing.Color.White;
-        label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
-        label2.Location = new System.Drawing.Point(10, 39);
+        label2.BackColor = System.Drawing.Color.WhiteSmoke;
+        label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)204));
+        label2.Location = new System.Drawing.Point(22, 42);
         label2.Name = "label2";
-        label2.Size = new System.Drawing.Size(204, 35);
+        label2.Size = new System.Drawing.Size(178, 46);
         label2.TabIndex = 25;
         label2.Text = "0";
         label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -319,17 +276,13 @@ partial class Form1
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        BackColor = System.Drawing.Color.WhiteSmoke;
+        BackColor = System.Drawing.Color.LightGray;
         ClientSize = new System.Drawing.Size(224, 281);
         Controls.Add(label2);
         Controls.Add(label1);
-        Controls.Add(buttonChangeSign);
         Controls.Add(buttonAllClear);
         Controls.Add(buttonClearEntry);
         Controls.Add(buttonBackspace);
-        Controls.Add(buttonRemains);
-        Controls.Add(buttonSquareRoot);
-        Controls.Add(buttonFraction);
         Controls.Add(buttonEqual);
         Controls.Add(buttonPlus);
         Controls.Add(buttonMinus);
@@ -362,12 +315,6 @@ partial class Form1
     private System.Windows.Forms.Button buttonBackspace;
     private System.Windows.Forms.Button buttonClearEntry;
     private System.Windows.Forms.Button buttonAllClear;
-    private System.Windows.Forms.Button buttonChangeSign;
-
-    private System.Windows.Forms.Button buttonSquareRoot;
-    private System.Windows.Forms.Button buttonRemains;
-
-    private System.Windows.Forms.Button buttonFraction;
 
     private System.Windows.Forms.Button buttonEqual;
 
