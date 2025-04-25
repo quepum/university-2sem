@@ -58,6 +58,12 @@ public partial class Form1 : Form
         this.UpdateDisplay();
     }
 
+    private void BackspaceButton_Click(object sender, EventArgs e)
+    {
+        this.calculator.RemoveLastDigit();
+        this.UpdateDisplay();
+    }
+
     private void UpdateDisplay()
     {
         this.fullExpression = this.calculator.GetExpression();

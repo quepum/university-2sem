@@ -166,7 +166,7 @@ partial class Form1
         // buttonDivision
         // 
         buttonDivision.BackColor = System.Drawing.Color.DarkOrange;
-        buttonDivision.Location = new System.Drawing.Point(160, 131);
+        buttonDivision.Location = new System.Drawing.Point(160, 93);
         buttonDivision.Name = "buttonDivision";
         buttonDivision.Size = new System.Drawing.Size(40, 32);
         buttonDivision.TabIndex = 11;
@@ -177,7 +177,7 @@ partial class Form1
         // buttonMultiplication
         // 
         buttonMultiplication.BackColor = System.Drawing.Color.DarkOrange;
-        buttonMultiplication.Location = new System.Drawing.Point(160, 167);
+        buttonMultiplication.Location = new System.Drawing.Point(160, 131);
         buttonMultiplication.Name = "buttonMultiplication";
         buttonMultiplication.Size = new System.Drawing.Size(40, 32);
         buttonMultiplication.TabIndex = 12;
@@ -188,7 +188,7 @@ partial class Form1
         // buttonMinus
         // 
         buttonMinus.BackColor = System.Drawing.Color.DarkOrange;
-        buttonMinus.Location = new System.Drawing.Point(160, 204);
+        buttonMinus.Location = new System.Drawing.Point(160, 167);
         buttonMinus.Name = "buttonMinus";
         buttonMinus.Size = new System.Drawing.Size(40, 32);
         buttonMinus.TabIndex = 13;
@@ -199,7 +199,7 @@ partial class Form1
         // buttonPlus
         // 
         buttonPlus.BackColor = System.Drawing.Color.DarkOrange;
-        buttonPlus.Location = new System.Drawing.Point(160, 93);
+        buttonPlus.Location = new System.Drawing.Point(160, 204);
         buttonPlus.Name = "buttonPlus";
         buttonPlus.Size = new System.Drawing.Size(40, 32);
         buttonPlus.TabIndex = 14;
@@ -228,6 +228,7 @@ partial class Form1
         buttonBackspace.TabIndex = 19;
         buttonBackspace.Text = "<-";
         buttonBackspace.UseVisualStyleBackColor = false;
+        buttonBackspace.Click += BackspaceButton_Click;
         // 
         // buttonClearEntry
         // 

@@ -82,6 +82,40 @@ public class CalculatorLogic
         }
     }
 
+    public void RemoveLastDigit()
+    {
+        if (this.waitNewOperand)
+        {
+            return;
+        }
+
+        if (this.hasDecimalPoint && this.decimalPlaces > 0)
+        {
+            this.fractionalPart /= 10;
+            this.decimalPlaces--;
+
+            if (this.decimalPlaces == 0)
+            {
+                this.hasDecimalPoint = false;
+            }
+        }
+        else if (this.integerPart > 0)
+        {
+            this.integerPart /= 10;
+
+            if (this.integerPart == 0 && !this.hasDecimalPoint)
+            {
+                this.ResetState();
+            }
+        }
+        else
+        {
+            this.ResetState();
+        }
+
+        this.DisplayResult = this.GetCurrentDoubleValue();
+    }
+
     public void ClearAll()
     {
         this.previousResult = 0;
