@@ -67,8 +67,9 @@ public class CalculatorLogic
         else
         {
             this.currentInput = this.currentInput[..^1];
-            this.DisplayResult = this.currentInput;
         }
+
+        this.DisplayResult = this.currentInput;
     }
 
     public void ToggleSign()
@@ -121,6 +122,7 @@ public class CalculatorLogic
         {
             this.hasDecimalPoint = true;
             this.currentInput += ',';
+            this.DisplayResult = this.currentInput;
         }
     }
 
