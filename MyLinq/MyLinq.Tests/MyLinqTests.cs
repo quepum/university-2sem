@@ -1,4 +1,4 @@
-﻿// <copyright file="MyLinq.cs" author="Alina Letyagina">
+﻿// <copyright file="MyLinqTests.cs" author="Alina Letyagina">
 // under MIT License.
 // </copyright>
 
