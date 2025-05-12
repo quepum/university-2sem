@@ -71,7 +71,7 @@ public static class MyLinq
         var counter = 0;
         foreach (var elem in seq)
         {
-            if (counter > n)
+            if (counter >= n)
             {
                 yield return elem;
             }
