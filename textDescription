@@ -1,0 +1,84 @@
+@startuml
+skinparam class {
+  BackgroundColor<<Interface>> LightBlue
+  BackgroundColor<<Abstract>> LightYellow
+  ArrowColor Black
+}
+
+interface IBoard {
+    + GetPiece(row: int, col: int) : Piece
+    + IsValidMove(move: Move, player: PlayerColor) : bool
+    + FlipPieces(move: Move, player: PlayerColor) : void
+    + IsGameOver() : bool
+}
+
+class Board implements IBoard {
+    - board : Piece[][]
+    + Board(size : int)
+}
+
+enum Piece {
+    Empty
+    Black
+    White
+}
+
+enum PlayerColor {
+    Black
+    White
+}
+
+interface IPlayer {
+    + GetMove(board: IBoard) : Move
+    + Color : PlayerColor
+}
+
+abstract class PlayerBase implements IPlayer {
+    + Color : PlayerColor
+}
+
+class HumanPlayer extends PlayerBase {
+    + GetMove(board: IBoard) : Move
+}
+
+abstract class BotPlayer extends PlayerBase {
+  abstract + GetMove(board: IBoard) : Move
+}
+
+class FirstBot extends BotPlayer {
+    + GetMove(board: IBoard) : Move
+}
+
+class SecondBot extends BotPlayer {
+    + GetMove(board: IBoard) : Move
+}
+
+class ReversiGame {
+    - Board : IBoard
+    - Players : IPlayer[2]
+    + PlayTurn() : void
+    + GetWinner() : PlayerColor
+    + InitBoard() : void
+}
+
+class StartPage {
+    + StartGame(player1Type : PlayerType, player2Type : PlayerType) : void
+}
+
+enum PlayerType {
+    Human
+    FirstBot
+    SecondBot
+}
+
+class Program {
+    + startPage : StartPage
+    + Main()
+}
+
+IBoard <.. ReversiGame
+ReversiGame "1" -- "2" IPlayer : players
+Program --> StartPage
+StartPage --> PlayerType
+StartPage --> ReversiGame : creates
+@enduml
