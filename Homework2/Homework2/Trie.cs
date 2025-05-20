@@ -9,22 +9,12 @@ namespace Homework2;
 /// </summary>
 public class Trie
 {
-    private readonly Node root;
-    private int size;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Trie"/> class.
-    /// </summary>
-    public Trie()
-    {
-        this.root = new Node();
-        this.size = 0;
-    }
+    private readonly Node root = new Node();
 
     /// <summary>
     /// Gets the number of strings in the trie.
     /// </summary>
-    public int Size => this.size;
+    public int Size { get; private set; }
 
     /// <summary>
     /// Adds new element to the trie.
@@ -34,7 +24,7 @@ public class Trie
     public bool Add(string element)
     {
         var currentNode = this.root ?? throw new ArgumentNullException(nameof(element));
-        foreach (char item in element)
+        foreach (var item in element)
         {
             if (!currentNode.Children.TryGetValue(item, out var child))
             {
@@ -52,7 +42,7 @@ public class Trie
         }
 
         currentNode.IsEndOfTheWord = true;
-        this.size++;
+        this.Size++;
 
         return true;
     }
@@ -65,7 +55,7 @@ public class Trie
     public bool Contains(string element)
     {
         var currentNode = this.root ?? throw new ArgumentNullException(nameof(element));
-        foreach (char item in element)
+        foreach (var item in element)
         {
             if (!currentNode.Children.TryGetValue(item, out var child))
             {
@@ -91,7 +81,7 @@ public class Trie
         }
 
         this.Remover(this.root, element, 0);
-        this.size--;
+        this.Size--;
         return true;
     }
 
@@ -112,7 +102,7 @@ public class Trie
             return currentNode?.Counter ?? 0;
         }
 
-        char item = prefix[index];
+        var item = prefix[index];
         return !currentNode.Children.TryGetValue(item, out var child)
             ? 0
             : this.GetPrefixCount(child, prefix, index + 1);
