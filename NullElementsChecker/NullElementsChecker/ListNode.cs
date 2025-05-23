@@ -12,9 +12,9 @@ namespace NullElementsChecker;
 public class ListNode<T>(T data)
 {
     /// <summary>
-    /// Gets or sets the data contained in the node.
+    /// Gets the data contained in the node.
     /// </summary>
-    public T Data { get; set; } = data;
+    public T Data { get; } = data;
 
     /// <summary>
     /// Gets or sets the reference to the next node in the linked list.
