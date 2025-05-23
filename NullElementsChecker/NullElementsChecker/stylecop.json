@@ -1,0 +1,12 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "",
+      "copyrightText": "<copyright file=\"{fileName}\" author=\"Alina Letyagina\">\nunder MIT License.\n</copyright>",
+      "documentExposedElements": true,
+      "documentInternalElements": true,
+      "documentPrivateElements": false
+    }
+  }
+}
