@@ -4,7 +4,6 @@
 
 namespace MyLinq.Tests;
 
-[TestFixture]
 public class MyLinqTests
 {
     [Test]
