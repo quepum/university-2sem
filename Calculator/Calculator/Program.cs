@@ -1,5 +1,12 @@
+// <copyright file="Program.cs" author="Alina Letyagina">
+// under MIT License.
+// </copyright>
+
 namespace Calculator;
 
+/// <summary>
+/// The Program class contains the entry point for the Windows Forms application.
+/// </summary>
 internal static class Program
 {
     /// <summary>
@@ -9,6 +16,6 @@ internal static class Program
     private static void Main()
     {
         ApplicationConfiguration.Initialize();
-        Application.Run(new Form1());
+        Application.Run(new CalculatorForm());
     }
 }
