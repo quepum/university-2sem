@@ -1,14 +1,18 @@
-﻿namespace Calculator.Tests;
+﻿// <copyright file="MyCalculatorTests.cs" author="Alina Letyagina">
+// under MIT License.
+// </copyright>
 
+namespace Calculator.Tests;
+
+/// <summary>
+/// Unit tests for the <see cref="CalculatorLogic"/> class to ensure correct behavior of calculator operations.
+/// </summary>
 public class MyCalculatorTests
 {
     private CalculatorLogic calculator;
 
     [SetUp]
-    public void Setup()
-    {
-        this.calculator = new CalculatorLogic();
-    }
+    public void Setup() => this.calculator = new CalculatorLogic();
 
     [Test]
     public void AddDigit_AddSingleDigit_ShouldUpdateCurrentInput()
@@ -34,7 +38,7 @@ public class MyCalculatorTests
         this.calculator.AddDigit(5);
         this.calculator.SetOperator("+");
 
-        string expression = this.calculator.GetExpression();
+        var expression = this.calculator.GetExpression();
 
         Assert.That(expression, Is.EqualTo("5 +"));
     }
@@ -46,7 +50,7 @@ public class MyCalculatorTests
         this.calculator.SetOperator("+");
         this.calculator.SetOperator("-");
 
-        string expression = this.calculator.GetExpression();
+        var expression = this.calculator.GetExpression();
 
         Assert.That(expression, Is.EqualTo("5 -"));
     }
@@ -59,7 +63,7 @@ public class MyCalculatorTests
         this.calculator.AddDigit(3);
         this.calculator.CalculateResult();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("8"));
     }
@@ -74,7 +78,7 @@ public class MyCalculatorTests
         this.calculator.AddDigit(2);
         this.calculator.CalculateResult();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("30"));
     }
@@ -87,7 +91,7 @@ public class MyCalculatorTests
         this.calculator.AddDigit(0);
         this.calculator.CalculateResult();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("0"));
     }
@@ -98,7 +102,7 @@ public class MyCalculatorTests
         this.calculator.AddDigit(5);
         this.calculator.RemoveLastDigit();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("0"));
     }
@@ -111,7 +115,7 @@ public class MyCalculatorTests
         this.calculator.AddDigit(3);
         this.calculator.RemoveLastDigit();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("12"));
     }
@@ -125,8 +129,8 @@ public class MyCalculatorTests
         this.calculator.CalculateResult();
         this.calculator.ClearAll();
 
-        string result = this.calculator.GetCurrentResult();
-        string expression = this.calculator.GetExpression();
+        var result = this.calculator.GetCurrentResult();
+        var expression = this.calculator.GetExpression();
 
         Assert.Multiple(() =>
         {
@@ -142,7 +146,7 @@ public class MyCalculatorTests
         this.calculator.AddDigit(2);
         this.calculator.ClearEntry();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("0"));
     }
@@ -153,7 +157,7 @@ public class MyCalculatorTests
         this.calculator.AddDigit(5);
         this.calculator.AddDecimalPoint();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("5,"));
     }
@@ -165,7 +169,7 @@ public class MyCalculatorTests
         this.calculator.AddDecimalPoint();
         this.calculator.AddDecimalPoint();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("5,"));
     }
@@ -176,7 +180,7 @@ public class MyCalculatorTests
         this.calculator.AddDigit(5);
         this.calculator.ToggleSign();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("-5"));
     }
@@ -188,7 +192,7 @@ public class MyCalculatorTests
         this.calculator.ToggleSign();
         this.calculator.ToggleSign();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("5"));
     }
@@ -198,7 +202,7 @@ public class MyCalculatorTests
     {
         this.calculator.ToggleSign();
 
-        string result = this.calculator.GetCurrentResult();
+        var result = this.calculator.GetCurrentResult();
 
         Assert.That(result, Is.EqualTo("0"));
     }
