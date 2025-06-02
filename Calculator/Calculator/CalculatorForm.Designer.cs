@@ -1,6 +1,6 @@
 ﻿namespace Calculator;
 
-partial class Form1
+partial class CalculatorForm
 {
     /// <summary>
     ///  Required designer variable.
@@ -29,7 +29,7 @@ partial class Form1
     /// </summary>
     private void InitializeComponent()
     {
-        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalculatorForm));
         buttonZero = new System.Windows.Forms.Button();
         button1 = new System.Windows.Forms.Button();
         button2 = new System.Windows.Forms.Button();
@@ -286,7 +286,7 @@ partial class Form1
         buttonToggleSign.UseVisualStyleBackColor = false;
         buttonToggleSign.Click += ToggleSignButton_Click;
         // 
-        // Form1
+        // CalculatorForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
