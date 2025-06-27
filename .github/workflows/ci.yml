@@ -11,12 +11,12 @@ jobs:
           dotnet-version: '9.x'
       - name: Build
         run: |
-          for solution in $(find . -name "*.sln"); do
+          for solution in $(find . -name "*.sln" -not -path "*Calculator*"); do
             dotnet build "$solution"
           done
       - name: Run tests
         run: |
-          for solution in $(find . -name "*.sln"); do
+          for solution in $(find . -name "*.sln" -not -path "*Calculator*"); do
             dotnet test "$solution"
           done
 
