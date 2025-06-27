@@ -11,7 +11,7 @@ jobs:
           dotnet-version: '9.x'
       - name: Build
         run: |
-          for solution in $(find . -name "*.sln" -not -path "*Calculator*"); do
+          for solution in $(find . -name "*.sln" -not -path "*Calculator*" -not -path "*TestRewriting*"); do
             dotnet build "$solution"
           done
       - name: Run tests
@@ -19,7 +19,6 @@ jobs:
           for solution in $(find . -name "*.sln" -not -path "*Calculator*"); do
             dotnet test "$solution"
           done
-
   build-Windows:
     runs-on: windows-latest
     steps:
